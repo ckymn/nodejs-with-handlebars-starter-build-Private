@@ -13,13 +13,9 @@ const router = require("./router");
 
 const app = express(); 
 dotenv.config({ path: "./env/env"})
-// mongoose.connect('mongodb://127.0.0.1/nodeblog_db', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true
-// })
 
-// const mongoStore = connectMongoo(expressSession)
+// connectDB();
+
 // app.use(
 //   expressSession({
 //     secret: 'testotesto',
@@ -29,42 +25,38 @@ dotenv.config({ path: "./env/env"})
 //   })
 // )
 
-// connectDB();
-
 // app.use((req, res, next) => {
 //   res.locals.sessionFlash = req.session.sessionFlash
 //   delete req.session.sessionFlash
 //   next()
 // })
 
-app.use(fileUpload())
-app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 app.engine('handlebars', exphbs())
 app.set('view engine', 'handlebars')
-// app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(bodyParser.json())
+app.use(cors());
+app.use(fileUpload())
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 
 
-app.use("/", (req,res) => {
-  res.render("index")
-})
+// app.use("/", (req,res) => {
+//   res.render("index")
+// })
 
-app.use((req, res, next) => {
-  const { userId } = req.session
-  if (userId) {
-    res.locals = {
-      displayLink: true
-    }
-  } else {
-    res.locals = {
-      displayLink: false
-    }
-  }
-  next()
-})
+// app.use((req, res, next) => {
+//   const { userId } = req.session
+//   if (userId) {
+//     res.locals = {
+//       displayLink: true
+//     }
+//   } else {
+//     res.locals = {
+//       displayLink: false
+//     }
+//   }
+//   next()
+// })
 
 // app.use('/', get)
 // app.use('/posts', posts)

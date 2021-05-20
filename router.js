@@ -1,23 +1,34 @@
 const express = require("express");
 const router = express.Router();
-// const user = require("./modules/user/routes");
-// const blog = require("./modules/blogs/routes");
+
+const user = require("./modules/user/routes");
+const get = require("./modules/get/route");
+const post = require("./modules/post/routes");
+// const admin = require("./modules/admin/routes");
 // const user_middleware = require("./modules/user/middleware");
 
-// // user
+// get 
+router.get(`/`, get.home);
+router.get(`/admin`, get.admin);
+router.get(`/blog`,get.blog);
+router.get(`/contact`,get.contact);
+
 // router.get(`/`, user.home);
 // router.get(`/admin`, user_middleware.requires_auth, user.admin_index);
 // router.get(`/admin/add`,/*  user_middleware.requires_auth, */ user.admin_add_get);
 // router.post(`/admin/add`, user_middleware.requires_auth, user.admin_add_post);
 // router.delete(`/admin/delete/:id`, user_middleware.requires_auth, user.admin_delete);
 
-// // blogs
-// router.get(`/blog/:id`, user_middleware.requires_auth, blog.blog_single);
-// router.get(`/about`, user_middleware.requires_auth, blog.blog_about);
+// post
+router.get(`/post/add`, post.add_post);
+router.get(`/post/:id`, post.get_post);
+router.get(`/post/test`, post.test);
 
-// // auth
-// router.post(`/login`,user.login);
-// router.post(`/signup`,user.signup);
-// router.post(`/logout`,user.logout);
+// user
+router.get(`/auth/login`,user.login_get);
+router.post(`/auth/login`,user.login);
+router.get(`/auth/register`,user.register_get);
+router.post(`/auth/register`,user.register);
+router.get(`/auth/logout`,user.logout);
 
 module.exports = router;
