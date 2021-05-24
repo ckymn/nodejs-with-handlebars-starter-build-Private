@@ -1,5 +1,7 @@
 const express = require('express')
-const exphbs = require('express-handlebars')
+const Handlebars = require('handlebars')
+const expressHandlebars = require('express-handlebars');
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const mongoose = require('mongoose')
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -10,11 +12,16 @@ const connectMongoo = require('connect-mongo')
 const env = require("./config")
 const connectDB = require("./config/db");
 const router = require("./router");
-
 const app = express(); 
-dotenv.config({ path: "./env/env"})
 
-// connectDB();
+dotenv.config({ path: "./config/.env"})
+
+connectDB();
+
+app.engine('handlebars', expressHandlebars({
+  handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
+app.set('view engine', 'handlebars');
 
 // app.use(
 //   expressSession({
@@ -32,8 +39,6 @@ dotenv.config({ path: "./env/env"})
 // })
 
 app.use(express.static(path.join(__dirname, "public")));
-app.engine('handlebars', exphbs())
-app.set('view engine', 'handlebars')
 app.use(cors());
 app.use(fileUpload())
 app.use(express.json());
@@ -65,6 +70,6 @@ app.use(express.urlencoded({extended: true}))
 app.use(router);
 
 
-app.listen(env("PORT",3333),() => {
+app.listen(env("PORT",env("PORT",3333)),() => {
   console.log(`Server running on ${env("PORT",3333)}`)
 })

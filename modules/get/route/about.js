@@ -1,6 +1,5 @@
 const route = async(req,res) => {
-
-	res.render("post");
-};
+	res.render("about");
+}
 
 module.exports = route;

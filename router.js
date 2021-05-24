@@ -12,17 +12,20 @@ router.get(`/`, get.home);
 router.get(`/admin`, get.admin);
 router.get(`/blog`,get.blog);
 router.get(`/contact`,get.contact);
+router.get(`/about`, get.about)
+
 
 // router.get(`/`, user.home);
 // router.get(`/admin`, user_middleware.requires_auth, user.admin_index);
 // router.get(`/admin/add`,/*  user_middleware.requires_auth, */ user.admin_add_get);
 // router.post(`/admin/add`, user_middleware.requires_auth, user.admin_add_post);
-// router.delete(`/admin/delete/:id`, user_middleware.requires_auth, user.admin_delete);
+// router.delete(`/admin/delete/:id`, user_middeleware.requires_auth, user.admin_delete);
 
 // post
-router.get(`/post/add`, post.add_post);
+router.post(`/post/add`, post.add_post);
+router.get(`/post/add`, post.get_add_post)
 router.get(`/post/:id`, post.get_post);
-router.get(`/post/test`, post.test);
+// router.get(`/post/test`, post.test);
 
 // user
 router.get(`/auth/login`,user.login_get);
