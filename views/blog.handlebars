@@ -8,6 +8,7 @@
 <!--==========================
     Contact Section
 ============================-->
+
 <section id="blog" class="md-padding">
   <div class="container">
     <div class="row">
@@ -22,7 +23,7 @@
             <div class="col-md-6">
               <div class="blog">
                 <div class="blog-img">
-                  <img src="{{post_image}}" class="img-fluid" />
+                  <img src="https://picsum.photos/200/300" class="img-fluid" />
                 </div>
                 <div class="blog-content">
                   <ul class="blog-meta">
@@ -30,14 +31,15 @@
                         Doe</span></li>
                     <li><i class="fas fa-clock"></i><span
                         class="writer"
-                      >{{createdAt}}</span></li>
+                      >{{date}}</span></li>
                     <li><i class="fas fa-comments"></i><span
                         class="writer"
                       >13</span></li>
                   </ul>
                   <h3>{{title}}</h3>
-                  <p>{{posts.content}}</p>
-                  <a href="/posts/{{_id}}">Read More</a>
+                  {{post_image}}
+                  <p>{{content}}</p>
+                  <a href="/post/{{_id}}">Read More</a>
                 </div>
               </div>
             </div>

@@ -7,7 +7,7 @@ const route = async(req,res) => {
 	if(!_post)
 		return res.status(404).send("post_not_found");
 	await _post.save();
-	res.render("addpost");
+	return res.render("blog");
 };
 
 module.exports = route;

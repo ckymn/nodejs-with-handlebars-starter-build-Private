@@ -14,16 +14,16 @@
 			<main id="main" class="col-md-8">
 				<div class="blog">
 					<div class="blog-img">
-						<img class="img-fluid" src="{{ post.post_image}}" alt="">
+						<img class="img-fluid" src="https://picsum.photos/200/300" alt={{post.title}}>
 					</div>
 					<div class="blog-content">
 						<ul class="blog-meta">
 							<li><i class="fas fa-user"></i>John Doe</li>
-							<li><i class="fas fa-clock"></i>{{ generateDate post.date 'MMM DDD YYYY'}}</li>
+							<li><i class="fas fa-clock"></i>MMM DDD YYYY</li>
 							<li><i class="fas fa-comments"></i>57</li>
 						</ul>
-						<h3>{{ post.title}}</h3>
-						<p>{{ post.content}}</p>
+						<h3>{{post.title}}</h3>
+						<p>{{post.content}}</p>
 					</div>
 
 
