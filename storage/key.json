@@ -1,0 +1,12 @@
+{
+	"type": "service_account",
+	"project_id": "alchemist-278816",
+	"private_key_id": "fb1f8ec68da8d4203066e01eb539560aab47feec",
+	"private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCkdVIJaxt/4DJN\nzzeW8jRyV0txvu96vozC8kTin9q6RBxv996HvEheftV/M0DDfUOQA0ETHbIRHpwo\nhV4nTdsM/XJ6RRUb8xTSs5IRbbmfZ6EKVD2suGIJqVk1hEg1fLwjzANZd7BVIbSe\n5XxRk6xyflUMyQRT0hrBBUW0H9nSbT3Hql71MoLHxSTtEsMPMVTJrJltb4JuOd+9\nZ80oCpwBxWvq6bPVHsR7v5xcTZoAL9W8D1zSQN8rbJWA9LEjQy0RJO3hqy1Af2Fm\nLREXjaSEbbCEdJwUAS67Kur7oZUBO7lxuYFPmENccwKmJKXwmtr+mh4OffmakEIK\nenSsu889AgMBAAECggEAHHgWwHyjIQrdimyxsdaxz41fCQzFhhkQYvrvg8+qXI5H\n4fYltpeYa4tHSCLGNlEr7fUyQa3lUmNbIwSbXPB0WBZTx+jHk7QLycG+Kng1JuwY\ni6Iznv+4MPX49HO20FOMeiHp/oXip4oTK2KMl86ZjqRh8rmlnyEC8qEIBPtyiKOL\nBDSJljoHw63D2UgxQqifjmJQUVlRkVS0bLhMglsqqZLYLktdTJvQaZHyYCxDCX6G\nv1UoaqRTB7d+h/Vi2nB1LyhM+iiqeeV11agrEmPOkOJXh0KbSsCnL+NwuvlMfv9s\nZMwo6AMWY6maT4gIfH98YUa1tuQV+thNwA7mEejS/QKBgQDmrx4LXjEWcoDaD+a4\nnOY2wY8L/FK3Dswv+EcKYKLX8OwoLmMZWqKZQePsyrryrxhT+kd5eZrZ6uuex6Fd\n3XQ5KIVJ2chpjVly2kE6Pox5bB3lumu43TTHp0yMuFc+QtQexanuIASN+0OQDD+5\nYY99DuljowErHCc5wCSGuzdNMwKBgQC2gaS5Vz7YZ0jFXkm/JoAMyrgP1H85kMtn\nkzKmVQ2eRnlp+yGiWrA50SA3iuyjWc/P+G92ItwA35kI+ANQY2gcJplGPYIgc6yb\nGTknMGbNWCZxmUTJAgrugCTY6rjaBTFk6tL+nSzkrnh9vse/QkGdsBPbQs6s5WP8\nqUZJ/YwRzwKBgD+xVDtRS35mKRuMTmjksU+nC8cEaRYwGMKZ64t6+RtkYuAJRsVm\nWAS2w6bKpumA3Ne6/+cTY2UNzvatKenPzlpFzN+CKSqzo2Hpzx60zHZuGqcmXL3T\nHdKOZ71m3HfNXeINM4kTAA7vtEzehO27eTHPXzNqe1Ua1d3FJpCounEvAoGBAIy/\norfFDxR5YufDdYBTQsGavSSILq3IevWf0ZnxUhVUKGKRaDj7U5jjLMNpAmJf6yJq\naBtleuG5jx4ZlwSyBSJgqig/W1GHo//hDfCpJT8L0modV6zlRGT2snQPYQvSoWtA\npgPyVyLtYsMnFIjtogjoOAgKl7VDGz9JlImPXiyFAoGAVSkn8m7niq9CMIvh9UdN\n95Nd0lB1M33OKoR5IZzkHBOJqVire8fgtQemC2Yn1F/FwNOLyR33bDWcHqRz+YkE\nU35ZaC+sTFo2h3vmeI868pbl6iMKJn46dwj3gLq4Wt47EMggiHpulfVerE3C+Y0Y\n1n35AwzTdhHfOiDolkML7rE=\n-----END PRIVATE KEY-----\n",
+	"client_email": "alchemist-store@alchemist-278816.iam.gserviceaccount.com",
+	"client_id": "112069202144884906200",
+	"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+	"token_uri": "https://oauth2.googleapis.com/token",
+	"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+	"client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/alchemist-store%40alchemist-278816.iam.gserviceaccount.com"
+  }
