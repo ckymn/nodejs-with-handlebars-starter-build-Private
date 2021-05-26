@@ -1,17 +1,16 @@
 const express = require('express')
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+const cors = require("cors");
+const fileUpload = require("express-fileupload");
+const expressSession = require('express-session')
+const connectDB = require("./config/db");
 const Handlebars = require('handlebars')
 const expressHandlebars = require('express-handlebars');
-const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
-const mongoose = require('mongoose')
-const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
-const fileUpload = require('express-fileupload')
-const expressSession = require('express-session')
-const connectMongoo = require('connect-mongo')
 const env = require("./config")
-const connectDB = require("./config/db");
 const router = require("./router");
+const moment = require('moment');
 const app = express(); 
 
 dotenv.config({ path: "./config/.env"})
@@ -19,7 +18,12 @@ dotenv.config({ path: "./config/.env"})
 connectDB();
 
 app.engine('handlebars', expressHandlebars({
-  handlebars: allowInsecurePrototypeAccess(Handlebars)
+  handlebars: allowInsecurePrototypeAccess(Handlebars),
+  helpers: {
+    format_date: (date, format) => {
+      return moment(date).format(format);
+    }
+  }
 }));
 app.set('view engine', 'handlebars');
 
@@ -44,11 +48,6 @@ app.use(fileUpload())
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 
-
-// app.use("/", (req,res) => {
-//   res.render("index")
-// })
-
 // app.use((req, res, next) => {
 //   const { userId } = req.session
 //   if (userId) {
@@ -63,10 +62,6 @@ app.use(express.urlencoded({extended: true}))
 //   next()
 // })
 
-// app.use('/', get)
-// app.use('/posts', posts)
-// app.use('/users', users)
-// app.use('/admin', admin)
 app.use(router);
 
 

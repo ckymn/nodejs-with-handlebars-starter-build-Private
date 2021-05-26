@@ -2,7 +2,9 @@ const { Storage } = require("@google-cloud/storage");
 const path = require("path");
 
 // creates a client 
-const storage = new Storage({ keyFilename: `storage/key.json`, projectId: `alchemist-278816`});
+const storage = new Storage({ keyFilename: `storage/key.json`, projectId: `blog-h-images`});
+
+// storage.getBuckets().then(x => console.log("blog-h-images:", x));
 
 const bucketName = `blog-h`;
 

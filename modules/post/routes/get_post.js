@@ -1,4 +1,6 @@
 const Post = require("../model");
+const Img = require("../../img/model");
+
 
 const route = async (req, res) => {
   const { body, params } = req;

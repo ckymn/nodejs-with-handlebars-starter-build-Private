@@ -11,13 +11,14 @@ const route = async (req,res) => {
 	const bucket = await get_bucked();
 	try {
 		const file = bucket.file(params.id);
-		const exists = (await file.exists())[0];
-		if(exists)
+		const _exists = (await file.exists())[0];
+		console.log("exists : ", _exists);
+		if(_exists)
 			return file.createReadStream().pipe(res);
 	} catch (error) {
 		console.error("Img_upload_foultt : ", error);
 	}
-	return res.status(404).render("blog");
+	return res.status(404).render("blog", {img:_exists});
 };
 
 module.exports = route;
