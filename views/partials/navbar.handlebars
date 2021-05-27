@@ -19,7 +19,7 @@
 					<li class="nav-item">
 						<a class="nav-link" href="/about">About</a>
 					</li>
-					{{#if true}} <!--Ilk Basta displayLink yani Login Yapilmis ise addPost gozuksun isteriz-->
+					{{#if displayLink}}
 					<li class="nav-item">
 						<a class="nav-link" href="/post/add">ADD Blog</a>
 					</li>
@@ -27,7 +27,7 @@
 					<li class="nav-item">
 						<a class="nav-link" href="/contact">Contact</a>
 					</li>
-					{{#unless false}} <!--Ilk basta displayLink varsa gozukmesini istemiyiruz yoksa gozuksun diyoruz-->
+					{{#unless displayLink}} 
 					<li class="nav-item">
 						<a class="nav-link" href="/auth/login">Log In</a>
 					</li>
@@ -35,7 +35,7 @@
 						<a class="nav-link" href="/auth/register">Register</a>
 					</li>
 					{{/unless}}
-					{{#if true}}
+					{{#if displayLink}}
 					<li class="nav-item">
 						<a class="nav-link" href="/auth/logout">Log Out</a>
 					</li>

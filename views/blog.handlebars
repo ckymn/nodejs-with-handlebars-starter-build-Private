@@ -13,11 +13,11 @@
   <div class="container">
     <div class="row">
       <main id="main" class="col-md-8">
-        {{!-- {{#if sessionFlash.message}} --}}
-        {{!-- <div class="{{sessionFlash.type}}"> --}}
-        {{!-- {{sessionFlash.message}} --}}
-        {{! </div> }}
-        {{!-- {{/if}} --}}
+        {{#if sessionFlash.message}}
+          <div class="{{sessionFlash.type}}">
+            {{sessionFlash.message}}
+          </div>
+        {{/if}}
         <div class="row">
           {{#each posts}}
             <div class="col-md-6">
@@ -48,7 +48,9 @@
               </div>
             </div>
           {{/each}}
-          <nav aria-label="Page navigation example d-flex justify-content-center">
+          <nav
+            aria-label="Page navigation example d-flex justify-content-center"
+          >
             <ul class="pagination">
               <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">

@@ -1,5 +1,5 @@
 const  route = async (req,res) => {
-	res.session.destroy(() => {
+	req.session.destroy(() => {
 		res.redirect("/")
 	});
 

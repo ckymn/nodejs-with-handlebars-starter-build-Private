@@ -3,6 +3,7 @@ const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-acce
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const expressSession = require('express-session')
+const MongoStore = require("connect-mongo");
 const connectDB = require("./config/db");
 const Handlebars = require('handlebars')
 const expressHandlebars = require('express-handlebars');
@@ -14,9 +15,18 @@ const moment = require('moment');
 const app = express(); 
 
 dotenv.config({ path: "./config/.env"})
-
 connectDB();
-
+app.use(
+  expressSession({
+    secret: 'testotesto',
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI,
+      ttl: 1*24*60*60// 1 day
+    })
+  })
+)
 app.engine('handlebars', expressHandlebars({
   handlebars: allowInsecurePrototypeAccess(Handlebars),
   helpers: {
@@ -26,44 +36,31 @@ app.engine('handlebars', expressHandlebars({
   }
 }));
 app.set('view engine', 'handlebars');
-
-// app.use(
-//   expressSession({
-//     secret: 'testotesto',
-//     resave: false,
-//     saveUninitialized: true,
-//     store: new mongoStore({ mongooseConnection: mongoose.connection }) //server yenilense bile biligeri kadeder
-//   })
-// )
-
-// app.use((req, res, next) => {
-//   res.locals.sessionFlash = req.session.sessionFlash
-//   delete req.session.sessionFlash
-//   next()
-// })
-
+app.use((req, res, next) => {
+  res.locals.sessionFlash = req.session.sessionFlash
+  delete req.session.sessionFlash
+  next()
+})
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 app.use(fileUpload())
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
-
-// app.use((req, res, next) => {
-//   const { userId } = req.session
-//   if (userId) {
-//     res.locals = {
-//       displayLink: true
-//     }
-//   } else {
-//     res.locals = {
-//       displayLink: false
-//     }
-//   }
-//   next()
-// })
+app.use((req, res, next) => {
+  const { token } = req.session
+  if (token) {
+    res.locals = {
+      displayLink: true
+    }
+  } else {
+    res.locals = {
+      displayLink: false
+    }
+  }
+  next()
+})
 
 app.use(router);
-
 
 app.listen(env("PORT",env("PORT",3333)),() => {
   console.log(`Server running on ${env("PORT",3333)}`)

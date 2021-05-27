@@ -1,5 +1,29 @@
+const User = require("../model");
+const { Token, Pass } = require("../../../util/auth");
+const joi = require("../../../util/joi");
+const message = require("../../../util/flashMessage");
+
+const schema = joi.object({
+	email: joi.string().email().allow(null, ""),
+	username: joi.string().alphanum().min(3).max(30).required(),
+	password: joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
+}).optional({ stripUnknown: true });
+
+
 const route = async( req, res ) => {
-	res.render("login");
+	let { params, body } = req;
+	const { email, password , username} = body;
+	const _profile = await User.findOne({ $or: [{ username}, { email }]});
+	if(!_profile){
+		req.session.sessionFlash = message[3]
+		return res.status(401).redirect("/auth/register");
+	}
+	let match = await Pass.match(password, _profile.password);
+	if(!match)
+		return res.status(401).redirect("/auth/login");
+	let acces_token = await Token.encode({_id: _profile._id, type:"admin"});
+	req.session.token = acces_token;
+	return res.redirect("/");
 }
 
-module.exports = route;
+module.exports = { route, schema};
