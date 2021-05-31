@@ -1,5 +1,5 @@
 const route = async(req,res) => {
-	res.render("admin");
+	res.render("admin/admin");
 }
 
 module.exports = route;

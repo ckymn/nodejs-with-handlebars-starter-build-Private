@@ -1,6 +1,6 @@
 const Post = require("../model");
 const path = require("path");
-const message = require("../../../util/flashMessage");
+const sendMessage = require("../../../util/flashMessage");
 
 const route = async(req,res) => {
 	const { body, parms ,files} = req;
@@ -12,7 +12,7 @@ const route = async(req,res) => {
 		...body, 
 		post_image:`/img/postimages/${post_image.name}`
 	});
-	req.session.sessionFlash = message[0];
+	req.session.sessionFlash = sendMessage("alert alert-success","Blog Create Successfully");
 	if(!_post)
 		return res.status(404).send("post_not_found");
 	await _post.save();

@@ -4,7 +4,7 @@ const router = express.Router();
 const user = require("./modules/user/routes");
 const get = require("./modules/get/route");
 const post = require("./modules/post/routes");
-// const admin = require("./modules/admin/routes");
+const admin = require("./modules/admin/route");
 const user_middleware = require("./middleware");
 
 // get 
@@ -14,10 +14,10 @@ router.get(`/blog`,get.blog);
 router.get(`/contact`,get.contact);
 router.get(`/about`, get.about)
 
-
-// router.get(`/`, user.home);
-// router.get(`/admin`, user_middleware.requires_auth, user.admin_index);
-// router.get(`/admin/add`,/*  user_middleware.requires_auth, */ user.admin_add_get);
+// admin
+router.get(`/admin/categories`, admin.get_categories);
+router.post(`/admin/categories`, admin.add_categories);
+router.delete(`/admin/categories/:id`, admin.delete_categories);
 // router.post(`/admin/add`, user_middleware.requires_auth, user.admin_add_post);
 // router.delete(`/admin/delete/:id`, user_middeleware.requires_auth, user.admin_delete);
 

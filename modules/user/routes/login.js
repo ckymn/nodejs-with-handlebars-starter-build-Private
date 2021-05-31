@@ -1,7 +1,7 @@
 const User = require("../model");
 const { Token, Pass } = require("../../../util/auth");
 const joi = require("../../../util/joi");
-const message = require("../../../util/flashMessage");
+const sendMessage = require("../../../util/flashMessage");
 
 const schema = joi.object({
 	email: joi.string().email().allow(null, ""),
@@ -15,7 +15,7 @@ const route = async( req, res ) => {
 	const { email, password , username} = body;
 	const _profile = await User.findOne({ $or: [{ username}, { email }]});
 	if(!_profile){
-		req.session.sessionFlash = message[3]
+		req.session.sessionFlash =sendMessage("alert alert-danger","You Have To SignUp")
 		return res.status(401).redirect("/auth/register");
 	}
 	let match = await Pass.match(password, _profile.password);

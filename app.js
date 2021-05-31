@@ -12,6 +12,7 @@ const path = require("path");
 const env = require("./config")
 const router = require("./router");
 const moment = require('moment');
+const methodOverride = require("method-override");
 const app = express(); 
 
 dotenv.config({ path: "./config/.env"})
@@ -36,16 +37,19 @@ app.engine('handlebars', expressHandlebars({
   }
 }));
 app.set('view engine', 'handlebars');
-app.use((req, res, next) => {
-  res.locals.sessionFlash = req.session.sessionFlash
+app.use( async(req, res, next) => {
+  const _session =  await req.session.sessionFlash
+  // console.log(req.session);
+  res.locals.sessionFlash = _session
   delete req.session.sessionFlash
-  next()
-})
+  next();
+});
+app.use(fileUpload())
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
-app.use(fileUpload())
 app.use(express.json());
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}));
+app.use(methodOverride("_method"));// delete
 app.use((req, res, next) => {
   const { token } = req.session
   if (token) {
