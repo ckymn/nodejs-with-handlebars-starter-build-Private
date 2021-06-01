@@ -37,15 +37,15 @@ app.engine('handlebars', expressHandlebars({
   }
 }));
 app.set('view engine', 'handlebars');
+
+app.use(fileUpload())
+app.use(express.static(path.join(__dirname, "public")));
 app.use( async(req, res, next) => {
   const _session =  await req.session.sessionFlash
-  // console.log(req.session);
   res.locals.sessionFlash = _session
   delete req.session.sessionFlash
   next();
 });
-app.use(fileUpload())
-app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
