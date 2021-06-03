@@ -40,9 +40,8 @@ app.set('view engine', 'handlebars');
 
 app.use(fileUpload())
 app.use(express.static(path.join(__dirname, "public")));
-app.use( async(req, res, next) => {
-  const _session =  await req.session.sessionFlash
-  res.locals.sessionFlash = _session
+app.use( async (req, res, next) =>{
+  res.locals.sessionFlash = await req.session.sessionFlash
   delete req.session.sessionFlash
   next();
 });
