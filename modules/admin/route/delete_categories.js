@@ -7,7 +7,7 @@ const route = async (req,res) => {
 	const _delete = await Category.findOneAndDelete({_id: id});
 	if(!_delete)
 		return res.status(400).redirect("/admin/categories");
-	req.session.sessionFlash = sendMessage("alert alert-success", "Category Deleted")
+	req.session.message = await sendMessage("alert alert-warning","Category Deleted")
 	return res.redirect("/admin/categories");
 };
 

@@ -12,7 +12,7 @@ const route = async(req,res) => {
 		...body, 
 		post_image:`/img/postimages/${post_image.name}`
 	});
-	req.session.sessionFlash = sendMessage("alert alert-success","Blog Create Successfully");
+	req.session.message = await sendMessage("alert alert-success","Blog Create Successfully");
 	if(!_post)
 		return res.status(404).send("post_not_found");
 	await _post.save();

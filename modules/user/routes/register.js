@@ -8,7 +8,7 @@ const route = async( req, res ) => {
 	const hash = await Pass.hash(password);
 	const dub_email = await User.findOne({ email });
 	if(dub_email){
-		req.session.sessionFlash = sendMessage("alert alert-danger","Have Already email . You Should Other Email or You should Login")
+		req.session.message = await sendMessage("alert alert-danger","Have Already email . You Should Other Email or You should Login")
 		return res.status(400).redirect("/auth/register");
 	}
 	const _user = new User({
@@ -17,7 +17,7 @@ const route = async( req, res ) => {
 		password: hash
 	});		
 	await _user.save();
-	req.session.sessionFlash = sendMessage("alert alert-success","SignUp Success")
+	req.session.message = await sendMessage("alert alert-success","SignUp Success")
 	return res.redirect("/auth/login");
 }
 

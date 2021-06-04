@@ -1,4 +1,4 @@
-const sendMessage = (type, message) => {
+const sendMessage = async (type, message) => {
   return {
     type,
     message,

@@ -15,10 +15,11 @@
       <div class="col-md-4 offset-md-4">
         <div class="section-header">
           <h2 class="title">Register</h2>
-          {{#if sessionFlash.message}}
-            <div class="{{sessionFlash.type}}">
-              {{sessionFlash.message}}
-            </div>
+          {{#if message}}
+              <div class="{{message.type}}">
+                <button type="button" name="close" data-dismiss="alert" style="color: red;">X</button>
+                <strong>{{message.message}}</strong>
+              </div>
           {{/if}}
         </div>
       </div>

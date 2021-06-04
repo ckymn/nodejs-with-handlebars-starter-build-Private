@@ -1,6 +1,8 @@
-const route = async(req,res) => {
+const Category = require("../../admin/model");
 
-	res.render("addpost");
+const route = async(req,res) => {
+	let _category = await Category.find().sort({createdAt: -1});
+	res.render("addpost",{ category: _category});
 };
 
 module.exports = route;

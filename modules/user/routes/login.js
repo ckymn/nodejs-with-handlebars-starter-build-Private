@@ -15,7 +15,7 @@ const route = async( req, res ) => {
 	const { email, password , username} = body;
 	const _profile = await User.findOne({ $or: [{ username}, { email }]});
 	if(!_profile){
-		req.session.sessionFlash =sendMessage("alert alert-danger","You Have To SignUp")
+		req.session.message= await sendMessage("alert alert-danger","You Have To SignUp")
 		return res.status(401).redirect("/auth/register");
 	}
 	let match = await Pass.match(password, _profile.password);
