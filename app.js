@@ -13,7 +13,6 @@ const env = require("./config")
 const router = require("./router");
 const moment = require('moment');
 const methodOverride = require("method-override");
-const flash = require("connect-flash");
 const app = express(); 
 
 //config

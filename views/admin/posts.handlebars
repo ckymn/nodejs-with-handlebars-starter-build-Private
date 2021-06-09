@@ -1,0 +1,77 @@
+<!--==========================
+    INSIDE HERO SECTION Section
+============================-->
+<section class="page-image page-image-about md-padding">
+  <h1 class="text-white text-center">Posts</h1>
+</section>
+
+<!--==========================
+    ABOUTUS Section
+============================-->
+<section id="aboutus" class="md-padding">
+  <div class="container">
+    <ul
+      class="navbar-nav text-uppercase ml-auto mb-10"
+      style="display:grid; grid-template-columns: repeat(3,1fr);"
+    >
+      <li class="nav-item">
+        <a class="nav-link" href="/admin" style="text-align: center;">Admin</a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="/admin/categories"
+          style="text-align: center;"
+        >Categories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/" style="text-align: center;">Home</a>
+      </li>
+    </ul>
+
+    <div class="mb-5"></div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>TITLE</th>
+              <th>AUTHOR</th>
+              <th>CATEGORY</th>
+              <th>EDIT</th>
+              <th>DELETE</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each posts}}
+              <tr style="text-align: center; font-size: 1rem;">
+                <td>{{title}}</td>
+                <td>{{author.username}}</td>
+                <td>{{category.name}}</td>
+                <td>
+                  <form
+                    method="POST"
+                    action="/admin/categories/{{_id}}?_method=EDIT"
+                  >
+                    <input type="hidden" name="_method" value="EDIT" />
+                    <button type="submit" class="btn btn-primary">EDIT</button>
+                  </form>
+                </td>
+                <td>
+                  <form
+                    method="POST"
+                    action="/admin/categories/{{_id}}?_method=DELETE"
+                  >
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                  </form>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

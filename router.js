@@ -18,7 +18,7 @@ router.get(`/about`, get.about)
 router.get(`/admin/categories`, admin.get_categories);
 router.post(`/admin/categories`, admin.add_categories);
 router.delete(`/admin/categories/:id`, admin.delete_categories);
-// router.post(`/admin/add`, user_middleware.requires_auth, user.admin_add_post);
+router.get(`/admin/posts`, admin.admin_posts);
 // router.delete(`/admin/delete/:id`, user_middeleware.requires_auth, user.admin_delete);
 
 // post

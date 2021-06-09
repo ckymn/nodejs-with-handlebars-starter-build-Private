@@ -33,14 +33,9 @@
                 </div>
                 <div class="blog-content">
                   <ul class="blog-meta">
-                    <li><i class="fas fa-users"></i><span class="writer">John
-                        Doe</span></li>
-                    <li><i class="fas fa-clock"></i><span
-                        class="writer"
-                      >{{format_date date "MMM DD YYYY"}}</span></li>
-                    <li><i class="fas fa-comments"></i><span
-                        class="writer"
-                      >13</span></li>
+                    <li><i class="fas fa-users"></i><span class="writer">{{author.username}}</span></li>
+                    <li><i class="fas fa-clock"></i><span class="writer">{{format_date date "MMM DD YYYY"}}</span></li>
+                    <li><i class="fas fa-comments"></i><span class="writer">13</span></li>
                   </ul>
                   <h3>{{title}}</h3>
                   <p>{{content}}</p>
