@@ -12,5 +12,4 @@ const route = async (req, res) => {
 		return res.status(404).render("addpost");
   	return res.render("admin/posts",{ posts: _post});
 };
-
 module.exports = route;
