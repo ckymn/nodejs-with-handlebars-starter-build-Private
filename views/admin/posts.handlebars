@@ -15,27 +15,46 @@
       style="display:grid; grid-template-columns: repeat(3,1fr);"
     >
       <li class="nav-item">
-        <a class="nav-link" href="/admin" style="text-align: center;">Admin</a>
+        <a
+          class="nav-link"
+          href="/admin"
+          style="text-align: center; background-color:#817131;"
+        >Admin</a>
       </li>
       <li class="nav-item">
         <a
           class="nav-link"
           href="/admin/categories"
-          style="text-align: center;"
+          style="text-align: center; background-color:rgb(72, 54, 31)"
         >Categories</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/" style="text-align: center;">Home</a>
+        <a
+          class="nav-link"
+          href="/"
+          style="text-align: center; background-color:rgb(77, 43, 0)"
+        >Home</a>
       </li>
     </ul>
-
     <div class="mb-5"></div>
+
+    {{#if message}}
+      <div class="{{message.type}}">
+        <button
+          type="button"
+          name="close"
+          data-dismiss="alert"
+          style="color: red;"
+        >X</button>
+        <strong>{{message.message}}</strong>
+      </div>
+    {{/if}}
 
     <div class="row">
       <div class="col-md-12">
         <table class="table table-bordered">
           <thead>
-            <tr>
+            <tr style="text-align: center">
               <th>TITLE</th>
               <th>AUTHOR</th>
               <th>CATEGORY</th>
@@ -55,13 +74,13 @@
                     action="/admin/categories/{{_id}}?_method=EDIT"
                   >
                     <input type="hidden" name="_method" value="EDIT" />
-                    <button type="submit" class="btn btn-primary">EDIT</button>
+                    <button type="submit" class="btn btn-primary">Edit</button>
                   </form>
                 </td>
                 <td>
                   <form
                     method="POST"
-                    action="/admin/categories/{{_id}}?_method=DELETE"
+                    action="/admin/posts/{{_id}}?_method=DELETE"
                   >
                     <input type="hidden" name="_method" value="DELETE" />
                     <button type="submit" class="btn btn-danger">Remove</button>
