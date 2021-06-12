@@ -25,6 +25,8 @@ router.post(`/post/add`, post.add_post);
 router.get(`/post/add`, user_middleware.auth,post.get_add_post)
 router.get(`/post/:id`, post.get_post);
 router.delete(`/admin/posts/:id`,post.delete_post);
+router.get(`/admin/posts/edit/:id`,post.get_edit_post);
+router.put(`/admin/posts/edit/:id`,post.edit_post);
 
 // user
 router.get(`/auth/login`,user.login_get);

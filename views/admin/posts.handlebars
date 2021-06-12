@@ -69,13 +69,7 @@
                 <td>{{author.username}}</td>
                 <td>{{category.name}}</td>
                 <td>
-                  <form
-                    method="POST"
-                    action="/admin/categories/{{_id}}?_method=EDIT"
-                  >
-                    <input type="hidden" name="_method" value="EDIT" />
-                    <button type="submit" class="btn btn-primary">Edit</button>
-                  </form>
+                    <a class="btn btn-primary" href="/admin/posts/edit/{{_id}}">Edit</a>
                 </td>
                 <td>
                   <form
