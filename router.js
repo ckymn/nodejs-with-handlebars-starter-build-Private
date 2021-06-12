@@ -19,7 +19,6 @@ router.get(`/admin/categories`, admin.get_categories);
 router.post(`/admin/categories`, admin.add_categories);
 router.delete(`/admin/categories/:id`, admin.delete_categories);
 router.get(`/admin/posts`, admin.admin_posts);
-// router.delete(`/admin/delete/:id`, user_middeleware.requires_auth, user.admin_delete);
 
 // post
 router.post(`/post/add`, post.add_post);
