@@ -1,9 +1,48 @@
-<!-- Category -->
-<div class="widget">
-  <h3 class="mb-3">Categories</h3>
-  <div class="widget-category">
-    {{#each category}}
-      <a href="#">{{name}}<span>(7)</span></a>
-    {{/each}}
+<aside id="aside" class="col-md-4">
+
+  <div class="widget">
+    <div class="widget-search">
+      <input
+        class="search-input form-control"
+        type="text"
+        placeholder="Search"
+      />
+      <button class="search-btn" type="button"><i
+          class="fas fa-search"
+        ></i></button>
+    </div>
   </div>
-</div>
+  <!-- Search -->
+  <!-- Category -->
+  <div class="widget">
+    <h3 class="mb-3">Categories</h3>
+    <div class="widget-category">
+      {{#each category}}
+        <a href="#">{{name}}<span>(7)</span></a>
+      {{/each}}
+    </div>
+  </div>
+
+  <!-- Posts sidebar -->
+  <div class="widget">
+    <h3 class="mb-3">Latest Posts</h3>
+
+    <!-- single post -->
+    {{!-- NOTE burda fonksiyon yazimi gorunuyor --}}
+    {{#each (limit posts 3)}}
+    <div class="widget-post">
+      <a href="#">
+        <img class="img-fluid" src="{{post_image}}" alt="" />{{title}}
+      </a>
+      <ul class="blog-meta">
+        <li>{{format_date date "MMM DD YYYY"}}</li>
+      </ul>
+    </div>
+    <!-- /single post -->
+    {{/each}}
+    <!-- /single post -->
+
+  </div>
+  <!-- /Posts sidebar -->
+
+</aside>

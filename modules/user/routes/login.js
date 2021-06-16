@@ -19,8 +19,10 @@ const route = async( req, res ) => {
 		return res.status(401).redirect("/auth/register");
 	}
 	let match = await Pass.match(password, _profile.password);
-	if(!match)
+	if(!match){
+		req.session.message= await sendMessage("alert alert-danger","Password or Email Incorrect !")
 		return res.status(401).redirect("/auth/login");
+	}
 	let acces_token = await Token.encode({_id: _profile._id, type:"admin"});
 	req.session.token = acces_token;
 	return res.redirect("/");

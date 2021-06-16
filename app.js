@@ -5,13 +5,14 @@ const fileUpload = require("express-fileupload");
 const expressSession = require('express-session')
 const MongoStore = require("connect-mongo");
 const connectDB = require("./config/db");
+const limit = require("./util/limit");
+const date  = require('./util/date');
 const Handlebars = require('handlebars')
 const expressHandlebars = require('express-handlebars');
 const dotenv = require("dotenv");
 const path = require("path");
 const env = require("./config")
 const router = require("./router");
-const moment = require('moment');
 const methodOverride = require("method-override");
 const app = express(); 
 
@@ -59,9 +60,8 @@ app.use((req,res,next)=> {
 app.engine('handlebars', expressHandlebars({
   handlebars: allowInsecurePrototypeAccess(Handlebars),
   helpers: {
-    format_date: (date, format) => {
-      return moment(date).format(format);
-    }
+    format_date: date,
+    limit: limit
   }
 }));
 app.set('view engine', 'handlebars');
