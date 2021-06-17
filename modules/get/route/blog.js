@@ -21,11 +21,9 @@ const route = async(req,res) => {
 				_id: 1,
 				name: 1,
 				num_of_posts: { $size: "$posts" },// _category'e kaydedilecek alanlar,
-				author: Users
 			}
 		}
 	]);	
-	console.log(_category);
 	if(!_post)
 		return res.status(404).render("addpost");
 	return res.render("blog", {posts: _post, category: _category});

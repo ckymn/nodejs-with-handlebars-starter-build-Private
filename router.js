@@ -11,6 +11,7 @@ const user_middleware = require("./middleware");
 router.get(`/`, get.home);
 router.get(`/admin`, get.admin);
 router.get(`/blog`,get.blog);
+router.get(`/blog/:id`,get.get_match_category);
 router.get(`/contact`,get.contact);
 router.get(`/about`, get.about)
 
