@@ -7,7 +7,7 @@ const route = async (req, res) => {
 	let _post = await Post.find().
 		populate({ path: "author",select: "username", model: Users}).
 		populate({ path: "category",select: "name",model: Category}).
-		sort({createdAt: -1});
+		sort({created_at: -1});
 	if(!_post)
 		return res.status(404).render("addpost");
   	return res.render("admin/posts",{ posts: _post});
