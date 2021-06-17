@@ -18,7 +18,7 @@ const router = async (req, res) => {
 	  },
 	  {
 		  $project: {
-			  id: 1,
+			  _id: 1,
 			  name: 1,
 			  num_of_posts: { $size: "$posts" }
 		  }
